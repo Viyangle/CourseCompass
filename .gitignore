@@ -1,0 +1,24 @@
+node_modules/
+dist/
+.vite/
+*.log
+.DS_Store
+Thumbs.db
+
+# 本地数据与抓取快照（含个人信息，绝不入库）
+apps/server/data/
+apps/server/tmp/
+*.db
+*.sqlite
+
+# 临时截图（正式配图在 docs/images/）
+.screens/
+
+.env
+.env.local
+
+# 项目统一用 pnpm；npm 生成的锁文件容易误导
+package-lock.json
+
+# 视频渲染中间产物（成片与截图保留）
+video/frames/

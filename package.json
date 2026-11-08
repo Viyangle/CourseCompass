@@ -1,0 +1,23 @@
+{
+  "name": "nju-course-planner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "学业规划与选课决策辅助系统（南京大学场景）",
+  "packageManager": "pnpm@11.23.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:web": "pnpm --filter @planner/web dev",
+    "dev:server": "pnpm --filter @planner/server dev",
+    "build": "pnpm --filter @planner/web build",
+    "start": "pnpm --filter @planner/server start",
+    "typecheck": "pnpm -r typecheck",
+    "test": "pnpm --filter @planner/shared test"
+  },
+  "dependencies": {
+    "playwright-core": "^1.65.0"
+  }
+}

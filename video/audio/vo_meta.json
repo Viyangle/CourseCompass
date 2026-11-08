@@ -1,0 +1,80 @@
+[
+  {
+    "key": "hook",
+    "text": "还在为不知道选什么课而苦恼吗？",
+    "file": "audio/vo_hook.mp3",
+    "duration": 2.86
+  },
+  {
+    "key": "pain1",
+    "text": "培养方案翻了三遍，学分还是没算明白。",
+    "file": "audio/vo_pain1.mp3",
+    "duration": 3.62
+  },
+  {
+    "key": "pain2",
+    "text": "课程评价刷到凌晨，越看越不敢选。",
+    "file": "audio/vo_pain2.mp3",
+    "duration": 3.53
+  },
+  {
+    "key": "pain3",
+    "text": "两门课到底撞不撞？排完课表才知道。",
+    "file": "audio/vo_pain3.mp3",
+    "duration": 3.79
+  },
+  {
+    "key": "pain4",
+    "text": "方案 A 还是方案 B？全凭感觉。",
+    "file": "audio/vo_pain4.mp3",
+    "duration": 3.55
+  },
+  {
+    "key": "turn",
+    "text": "停！选课，不该是一场赌博。",
+    "file": "audio/vo_turn.mp3",
+    "duration": 3.41
+  },
+  {
+    "key": "reveal",
+    "text": "选课工作台，把培养方案、课程库、课表，装进同一张图。",
+    "file": "audio/vo_reveal.mp3",
+    "duration": 5.57
+  },
+  {
+    "key": "feat1",
+    "text": "学分缺口，一眼看穿。",
+    "file": "audio/vo_feat1.mp3",
+    "duration": 2.45
+  },
+  {
+    "key": "feat2",
+    "text": "时间冲突，提前拦截。",
+    "file": "audio/vo_feat2.mp3",
+    "duration": 2.54
+  },
+  {
+    "key": "feat3",
+    "text": "方案 A、方案 B，并排开卷。",
+    "file": "audio/vo_feat3.mp3",
+    "duration": 3.02
+  },
+  {
+    "key": "delight",
+    "text": "拖一拖，换一换，反悔还能撤销。",
+    "file": "audio/vo_delight.mp3",
+    "duration": 3.22
+  },
+  {
+    "key": "payoff",
+    "text": "把熬夜排课的晚上，还给你。",
+    "file": "audio/vo_payoff.mp3",
+    "duration": 2.71
+  },
+  {
+    "key": "cta",
+    "text": "先规划，再选课。",
+    "file": "audio/vo_cta.mp3",
+    "duration": 2.11
+  }
+]

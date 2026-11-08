@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>选课工作台 · 宣传片</title>
+<style>
+@font-face{font-family:'NotoSC';src:url('assets/fonts/NotoSansSC-VF.ttf') format('truetype');font-weight:100 900;font-display:block}
+@font-face{font-family:'NotoSerifSC';src:url('assets/fonts/NotoSerifSC-VF.ttf') format('truetype');font-weight:200 900;font-display:block}
+@font-face{font-family:'MiSans';src:url('assets/fonts/MiSans-Regular.otf') format('opentype');font-weight:400;font-display:block}
+
+:root{
+  --cream:#f5f4f0; --paper:#fffefb; --ink:#17161a; --ink2:#3e424b; --muted:#767b85;
+  --purple:#6d28d9; --purple2:#8b5cf6; --violet:#c4b5fd; --deep:#2b0f63;
+  --red:#c0281c; --green:#14795a; --amber:#9a5b06;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#000;overflow:hidden}
+#stage{
+  position:relative;width:1920px;height:1080px;overflow:hidden;
+  background:#121116;color:var(--ink);
+  font-family:'NotoSC','PingFang SC','Microsoft YaHei',sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+#stage-bg{position:absolute;inset:0;background:#121116}
+#dots{position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(rgba(23,22,26,.16) 1px,transparent 1px);
+  background-size:30px 30px;display:none}
+#noise{position:absolute;inset:-40px;background:url('assets/noise.png');opacity:.055;
+  mix-blend-mode:overlay;pointer-events:none;z-index:60}
+#vignette{position:absolute;inset:0;pointer-events:none;z-index:59;
+  background:radial-gradient(120% 90% at 50% 45%, transparent 45%, rgba(0,0,0,.32) 100%)}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:70}
+#sweep{position:absolute;top:0;bottom:0;width:340px;left:-400px;pointer-events:none;z-index:65;
+  background:linear-gradient(90deg,transparent,rgba(139,92,246,.20),rgba(255,255,255,.55),rgba(139,92,246,.20),transparent);
+  opacity:0}
+#global-fade{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:80}
+
+.scene{position:absolute;inset:0;overflow:hidden;opacity:0;visibility:hidden}
+.scene.on{opacity:1;visibility:visible}
+
+/* ---------- shared type ---------- */
+.display{font-weight:850;letter-spacing:-.045em;line-height:1.04;margin:0}
+.serif{font-family:'NotoSerifSC',serif}
+.kicker{display:flex;align-items:center;gap:14px;font-size:19px;font-weight:650;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted)}
+.kicker .kline{display:inline-block;width:40px;height:2px;background:currentColor;opacity:.7}
+.kicker.light{color:rgba(245,244,240,.62)}
+.line{display:block;overflow:hidden;padding:.06em 0 .12em}
+.line>span,.line>.li{display:block;will-change:transform}
+.ch{display:inline-block;will-change:transform,opacity}
+em.mark{font-style:normal;position:relative;color:var(--violet);
+  background-image:linear-gradient(rgba(245,244,240,.92),rgba(245,244,240,.92));
+  background-repeat:no-repeat;background-size:0% .09em;background-position:0 92%;box-decoration-break:clone}
+.sub{font-weight:500;color:rgba(245,244,240,.78);letter-spacing:.01em;line-height:1.55;margin:0}
+.tag{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;
+  font-size:14px;letter-spacing:.12em;font-weight:600;border:1px solid rgba(245,244,240,.28);color:rgba(245,244,240,.8)}
+.tag.ghost{opacity:.55}
+
+/* brand */
+#brand{position:absolute;left:64px;top:52px;display:flex;align-items:center;gap:12px;z-index:40;opacity:0}
+#brand .bm{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px;
+  background:linear-gradient(145deg,#8b5cf6,#4c1d95);box-shadow:0 6px 18px rgba(76,29,149,.35)}
+#brand .bt{font-size:15px;font-weight:700;letter-spacing:.02em}
+#brand .bs{font-size:10px;letter-spacing:.18em;opacity:.55;font-weight:500;margin-top:1px}
+
+.stage-label{position:absolute;right:70px;top:54px;font-size:12px;letter-spacing:.24em;font-weight:600;opacity:.5;z-index:40}
+.stage-label .num{font-size:15px;color:var(--purple)}
+
+/* ================= S1 HOOK ================= */
+#sc-hook{background:
+  radial-gradient(1100px 650px at 78% 18%, rgba(109,40,217,.20), transparent 60%),
+  radial-gradient(900px 600px at 12% 92%, rgba(192,40,28,.12), transparent 60%),
+  #121116}
+#sc-hook .ghost{position:absolute;right:-40px;bottom:-230px;font-size:880px;font-weight:900;line-height:1;
+  color:#fff;opacity:.028;letter-spacing:-.08em}
+.hook-top{position:absolute;left:92px;right:92px;top:96px;display:flex;justify-content:space-between;align-items:center}
+.hook-main{position:absolute;left:92px;top:232px;width:1500px}
+.hook-title{font-size:150px;color:var(--cream)}
+.hook-title .line:nth-child(1){font-size:62px;letter-spacing:.02em;color:rgba(245,244,240,.62);font-weight:600;margin-bottom:6px}
+.hook-title .line:nth-child(2){font-size:158px}
+.hook-title em.mark{color:#c9b8ff}
+.hook-title .qmark{color:#ff5a4e;font-weight:900;display:inline-block;margin-left:8px}
+.hook-sub{display:flex;align-items:center;gap:18px;margin-top:42px;font-size:25px;color:rgba(245,244,240,.62);letter-spacing:.06em;opacity:0}
+.hook-sub .bar{width:64px;height:1px;background:rgba(245,244,240,.35)}
+.hook-bottom{position:absolute;left:92px;bottom:74px;display:flex;gap:12px;align-items:center}
+.hook-cards{position:absolute;inset:0}
+.fcard{position:absolute;width:264px;padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.12);color:rgba(245,244,240,.72);opacity:0;will-change:transform,opacity}
+.fcard .fc-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;letter-spacing:.14em;opacity:.5}
+.fcard .fc-name{font-size:19px;font-weight:700;color:rgba(245,244,240,.92);margin-top:10px;letter-spacing:.01em}
+.fcard .fc-meta{font-size:12px;margin-top:6px;opacity:.55}
+.fcard .badge{display:inline-block;margin-top:10px;font-size:11px;padding:3px 8px;border-radius:5px;
+  background:rgba(255,90,78,.16);color:#ff8d84;border:1px solid rgba(255,90,78,.35);letter-spacing:.08em}
+.fcard .badge.ok{background:rgba(20,121,90,.16);color:#6ee7b7;border-color:rgba(20,121,90,.4)}
+
+/* ================= PAIN SHARED ================= */
+.pain{background:
+  radial-gradient(900px 700px at 70% 40%, rgba(109,40,217,.10), transparent 65%),
+  #121116;color:var(--cream)}
+.pain .copy{position:absolute;left:96px;top:222px;width:760px}
+.pain h2{font-size:104px;color:var(--cream);margin-top:34px}
+.pain h2 em{font-style:normal;color:#ff8d84}
+.pain .psub{font-size:40px;font-weight:600;color:rgba(245,244,240,.62);margin:30px 0 0;letter-spacing:.02em}
+.pain .pn{position:absolute;right:96px;bottom:66px;font-size:13px;letter-spacing:.2em;color:rgba(245,244,240,.35)}
+
+/* S2 docs */
+#sc-pain1 .bigword{position:absolute;right:-30px;top:10px;font-size:520px;font-weight:900;line-height:1;
+  color:rgba(255,255,255,.032);letter-spacing:-.08em}
+.docs{position:absolute;right:110px;top:180px;width:780px;height:720px}
+.doc{position:absolute;width:470px;border-radius:14px;background:#fbfaf7;color:#22212a;padding:0;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.45);will-change:transform,opacity}
+.doc .doc-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;border-bottom:1px solid #e6e3dc;
+  font-size:11px;color:#8a877f;letter-spacing:.03em;font-family:Consolas,monospace}
+.doc .doc-bar .dots{display:flex;gap:4px}
+.doc .doc-bar i{width:7px;height:7px;border-radius:50%;background:#d8d4cc;display:block}
+.doc .doc-bar .pg{margin-left:auto}
+.doc .doc-body{padding:20px 22px 24px}
+.doc .dh{font-size:20px;font-weight:800;letter-spacing:-.01em;margin-bottom:4px}
+.doc .ds{font-size:11px;color:#8a877f;letter-spacing:.06em;margin-bottom:14px}
+.doc .row{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px dashed #e6e3dc;color:#4a4852}
+.doc .row b{font-weight:700;color:#22212a;font-variant-numeric:tabular-nums}
+.doc .note{margin-top:12px;font-size:10px;color:#a09c94;line-height:1.6}
+.d1{left:50px;top:40px;transform:rotate(-6deg)}
+.d2{left:0px;top:250px;transform:rotate(3.5deg);width:500px}
+.d3{left:250px;top:360px;transform:rotate(8deg);width:430px}
+.qstamp{position:absolute;width:74px;height:74px;border-radius:50%;border:3px solid #c0281c;color:#c0281c;
+  display:grid;place-items:center;font-size:40px;font-weight:800;opacity:0;transform:rotate(-12deg)}
+.tallies{position:absolute;left:96px;top:660px;display:flex;gap:16px;align-items:flex-end}
+.tally{width:8px;height:74px;background:rgba(255,141,132,.85);border-radius:2px;transform-origin:bottom;opacity:0}
+.tally:nth-child(2){height:84px}.tally:nth-child(3){height:66px}
+.tally-label{font-size:13px;letter-spacing:.2em;color:rgba(245,244,240,.4);margin-left:8px}
+
+/* S3 comments */
+#sc-pain2 .clockghost{position:absolute;right:40px;top:150px;font-size:300px;font-weight:800;letter-spacing:-.06em;
+  color:rgba(255,255,255,.045);font-variant-numeric:tabular-nums}
+.cmts{position:absolute;right:80px;top:190px;width:900px;height:760px}
+.cmt{position:absolute;width:300px;padding:18px 20px;border-radius:14px;background:#1d1c24;border:1px solid rgba(255,255,255,.10);
+  color:rgba(245,244,240,.82);box-shadow:0 24px 50px rgba(0,0,0,.35);will-change:transform,opacity}
+.cmt .who{display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em;color:rgba(245,244,240,.4)}
+.cmt .stars{color:#f0b45a;letter-spacing:2px;font-size:12px}
+.cmt .txt{font-size:17px;font-weight:650;margin-top:10px;line-height:1.5}
+.cmt .small{font-size:11px;color:rgba(245,244,240,.4);margin-top:8px}
+.cmt.warn{border-color:rgba(255,90,78,.35);background:#241a1c}
+.cmt.warn .txt{color:#ffb0a8}
+#sc-pain2 .psub{color:#ffb0a8}
+
+/* S4 conflict */
+#sc-pain3 .grid{position:absolute;right:90px;top:186px;width:880px;height:700px;border:1px solid rgba(255,255,255,.10);
+  border-radius:16px;background:rgba(255,255,255,.028);overflow:hidden}
+.grid .glines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.065) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.065) 1px,transparent 1px);background-size:176px 112px}
+.grid .ghead{position:absolute;left:0;right:0;top:0;height:46px;border-bottom:1px solid rgba(255,255,255,.1);
+  display:flex;align-items:center;padding-left:26px;font-size:11px;letter-spacing:.18em;color:rgba(245,244,240,.38)}
+.grid .gdays{position:absolute;left:0;right:0;top:46px;height:32px;display:grid;grid-template-columns:repeat(5,1fr);
+  border-bottom:1px solid rgba(255,255,255,.07);font-size:10px;letter-spacing:.16em;color:rgba(245,244,240,.32)}
+.grid .gdays span{display:grid;place-items:center;border-right:1px solid rgba(255,255,255,.05)}
+.grid .day{position:absolute;top:78px;height:calc(100% - 78px);width:1px;background:rgba(255,255,255,.06)}
+.block{position:absolute;width:270px;padding:16px 18px;border-radius:10px;border-left:5px solid;
+  background:rgba(139,58,98,.22);will-change:transform,opacity}
+.block .bt{font-size:20px;font-weight:750;color:#f6e9ef}
+.block .bm2{font-size:11.5px;color:rgba(246,233,239,.55);margin-top:6px}
+.block.ghost{opacity:.34;width:220px;border-left-width:3px;background:rgba(255,255,255,.035);border-color:#5f6b7a}
+.block.ghost .bt{font-size:14px;color:rgba(245,244,240,.7)}
+.block.ghost .bm2{font-size:10px}
+.b1{left:56px;top:204px;border-color:#d86a9b}
+.b2{left:462px;top:204px;border-color:#e08a5a;background:rgba(162,96,27,.24);width:280px}
+.conflictline{position:absolute;left:322px;top:192px;width:2px;height:190px;border:0;opacity:0;
+  background:linear-gradient(180deg,transparent,#ff5a4e 18%,#ff5a4e 82%,transparent);
+  box-shadow:0 0 22px rgba(255,90,78,.8)}
+.stamp{position:absolute;left:236px;top:372px;padding:9px 26px;border:4px solid #ff5a4e;color:#ff5a4e;
+  font-size:44px;font-weight:900;letter-spacing:.12em;transform:rotate(-9deg);opacity:0;border-radius:8px;
+  background:rgba(18,17,22,.72)}
+#sc-pain3 .psub{color:#ffb0a8}
+
+/* S5 plans */
+.tarots{position:absolute;right:100px;top:150px;width:900px;height:800px}
+.tarot{position:absolute;width:330px;height:470px;border-radius:18px;background:linear-gradient(160deg,#211c31,#17151e);
+  border:1px solid rgba(196,181,253,.28);box-shadow:0 40px 80px rgba(0,0,0,.5);padding:26px;will-change:transform,opacity}
+.tarot .tl{font-size:12px;letter-spacing:.2em;color:rgba(196,181,253,.6)}
+.tarot .letter{font-size:150px;font-weight:900;line-height:1;color:rgba(196,181,253,.9);margin-top:20px;letter-spacing:-.06em}
+.tarot .tn{font-size:22px;font-weight:750;color:#efeaff;margin-top:8px}
+.tarot .tline{height:1px;background:rgba(255,255,255,.12);margin:20px 0}
+.tarot .tr{display:flex;justify-content:space-between;font-size:12px;color:rgba(239,234,255,.55);padding:6px 0}
+.tarot .tr b{color:#efeaff;font-weight:650}
+.ta{left:40px;top:90px;transform:rotate(-8deg)}
+.tb{right:20px;top:170px;transform:rotate(7deg);border-color:rgba(110,231,183,.25)}
+.tb .letter{color:#6ee7b7}
+.coin{position:absolute;left:400px;top:40px;width:110px;height:110px;border-radius:50%;
+  background:linear-gradient(145deg,#f4d58a,#b98a2e);box-shadow:0 20px 40px rgba(0,0,0,.45),inset 0 2px 6px rgba(255,255,255,.6);
+  display:grid;place-items:center;font-size:40px;font-weight:900;color:#6b4a10;will-change:transform;opacity:0}
+#sc-pain4 .psub{color:#f4d58a}
+
+/* ================= TURN ================= */
+#sc-turn{background:
+  radial-gradient(900px 600px at 24% 30%, rgba(192,40,28,.10), transparent 60%),
+  var(--cream);color:var(--ink)}
+.stopbig{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:520px;font-weight:900;
+  line-height:1;letter-spacing:-.06em;color:var(--ink);will-change:transform,opacity}
+.stopbig .dot{position:absolute;right:-.14em;bottom:.09em;width:.155em;height:.155em;border-radius:50%;
+  background:var(--red);box-shadow:0 0 40px rgba(192,40,28,.25)}
+.stopring{position:absolute;left:50%;top:46%;width:620px;height:620px;border-radius:50%;border:3px solid var(--red);
+  transform:translate(-50%,-50%) scale(.7);opacity:0}
+.turn-copy{position:absolute;left:120px;bottom:150px;width:1240px}
+.turn-copy h2{font-size:96px;line-height:1.12}
+.turn-copy .strike{position:relative;color:var(--red)}
+.turn-copy .strike:after{content:'';position:absolute;left:-2%;right:-2%;top:53%;height:7px;background:var(--ink);
+  transform:scaleX(var(--sx,0));transform-origin:left;border-radius:4px}
+.turn-chips{position:absolute;right:120px;bottom:170px;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
+.tchip{font-size:15px;letter-spacing:.06em;color:var(--muted);border:1px solid #d9d5cb;border-radius:999px;
+  padding:9px 16px;background:rgba(255,255,255,.5);opacity:0}
+
+/* ================= REVEAL ================= */
+#sc-reveal{background:
+  radial-gradient(1100px 720px at 80% 20%, rgba(109,40,217,.16), transparent 60%),
+  radial-gradient(900px 700px at 10% 90%, rgba(20,121,90,.08), transparent 60%),
+  var(--cream)}
+.reveal-copy{position:absolute;left:110px;top:270px;width:560px}
+.reveal-copy .rk{font-size:14px;letter-spacing:.22em;color:var(--purple);font-weight:700}
+.reveal-copy h1{font-size:96px;margin:18px 0 0;line-height:1.02;letter-spacing:-.05em}
+.reveal-copy h1 .thin{font-weight:300;color:var(--ink2)}
+.reveal-copy .rsub{font-size:31px;line-height:1.55;color:var(--ink2);margin-top:26px;font-weight:550}
+.reveal-copy .rdesc{font-size:15px;line-height:1.75;color:var(--muted);margin-top:22px;width:400px}
+.reveal-chips{position:absolute;left:110px;bottom:118px;display:flex;gap:10px}
+.rchip{font-size:13px;letter-spacing:.08em;padding:9px 15px;border-radius:999px;border:1px solid #d9d4c8;
+  color:var(--ink2);background:rgba(255,255,255,.55);opacity:0}
+.source-cards{position:absolute;right:80px;top:120px;width:1160px;height:860px;perspective:1800px}
+.scard{position:absolute;width:230px;padding:14px 16px;border-radius:12px;background:#fff;border:1px solid #e6e1d6;
+  box-shadow:0 18px 40px rgba(35,25,60,.14);will-change:transform,opacity;display:flex;gap:11px;align-items:center}
+.scard .ic{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff}
+.scard .sct{font-size:14px;font-weight:750}.scard .scs{font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:.04em}
+.scard.s1{left:0;top:30px}.scard.s1 .ic{background:#2f6f9f}
+.scard.s2{right:0;top:20px}.scard.s2 .ic{background:#a2601b}
+.scard.s3{right:90px;bottom:20px}.scard.s3 .ic{background:#3f7d5a}
+.ui-frame{position:absolute;border-radius:18px;overflow:hidden;background:#fff;border:1px solid rgba(23,22,26,.10);
+  box-shadow:0 50px 110px rgba(45,28,95,.22),0 10px 30px rgba(45,28,95,.10);will-change:transform,opacity}
+.ui-frame:after{content:'';position:absolute;inset:0;border-radius:18px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);pointer-events:none}
+.ui-zoom{position:absolute;inset:0;transform-origin:50% 50%;will-change:transform}
+.ui-zoom img{width:100%;height:100%;display:block;object-fit:cover}
+#revealFrame{right:70px;top:250px;width:1180px;height:664px}
+.scard-line{position:absolute;height:1px;background:rgba(109,40,217,.35);transform-origin:left;opacity:0}
+#revealBadge{position:absolute;right:100px;top:212px;z-index:5}
+#revealBadge .b{background:var(--purple);color:#fff;border-radius:10px;padding:8px 13px;font-size:11px;letter-spacing:.16em;font-weight:700;
+  box-shadow:0 10px 24px rgba(109,40,217,.35)}
+
+/* ================= FEATURES ================= */
+.feature{background:
+  radial-gradient(900px 700px at 82% 20%, rgba(109,40,217,.10), transparent 62%),
+  radial-gradient(700px 600px at 6% 92%, rgba(20,121,90,.07), transparent 60%),
+  var(--cream)}
+.f-copy{position:absolute;left:104px;top:210px;width:720px}
+.f-idx{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.2em;color:var(--purple);font-weight:700}
+.f-idx .n{font-size:16px}
+.f-copy h2{font-size:112px;margin:24px 0 0;line-height:1.02;letter-spacing:-.05em}
+.f-copy h2 .accent{color:var(--purple)}
+.f-copy .fsub{font-size:26px;line-height:1.6;color:var(--ink2);margin:28px 0 0;font-weight:500;width:560px}
+.fnum{position:absolute;left:104px;bottom:118px}
+.fnum .big{font-size:172px;font-weight:850;letter-spacing:-.06em;line-height:.9;font-variant-numeric:tabular-nums}
+.fnum .den{font-size:56px;color:var(--muted);font-weight:500;letter-spacing:-.02em;margin-left:8px}
+.fnum .cap{font-size:13px;letter-spacing:.16em;color:var(--muted);margin-top:12px}
+.fnum .bar{width:360px;height:8px;border-radius:4px;background:#e4dfd2;margin-top:16px;overflow:hidden}
+.fnum .bar i{display:block;height:100%;background:var(--purple);border-radius:4px;width:0%}
+.fnum .pct{font-size:14px;color:var(--green);margin-top:9px;font-weight:650}
+#f1Frame{right:80px;top:250px;width:960px;height:540px;transform-origin:50% 50%}
+.hl{position:absolute;border:2px solid rgba(192,40,28,.85);border-radius:10px;box-shadow:0 0 0 6px rgba(192,40,28,.10),0 0 30px rgba(192,40,28,.25);opacity:0}
+.hl.green{border-color:rgba(20,121,90,.8);box-shadow:0 0 0 6px rgba(20,121,90,.10),0 0 30px rgba(20,121,90,.2)}
+.f2frame{left:80px;top:236px;width:980px;height:551px}
+.f2copy{left:auto;right:104px;width:740px;text-align:left}
+.f2copy h2{font-size:108px}
+.confpill{display:inline-flex;align-items:center;gap:10px;margin-top:30px;padding:10px 18px;border-radius:999px;
+  background:rgba(192,40,28,.08);border:1px solid rgba(192,40,28,.25);color:var(--red);font-size:18px;font-weight:750}
+.confpill .d{width:9px;height:9px;border-radius:50%;background:var(--red)}
+.fchips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px;width:620px}
+.fchip{font-size:15px;padding:8px 14px;border-radius:8px;background:#fff;border:1px solid #e4dfd3;color:var(--ink2);
+  letter-spacing:.03em;opacity:0;font-weight:550}
+.fchip b{color:var(--red);font-weight:750}
+#f2Frame .scan{position:absolute;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#ff5a4e,transparent);
+  box-shadow:0 0 18px #ff5a4e;opacity:0;pointer-events:none}
+.detail{position:absolute;left:96px;top:812px;width:560px;padding:20px 24px;border-radius:14px;background:#fff;
+  border:1px solid #e6dfd3;border-left:5px solid var(--red);box-shadow:0 30px 70px rgba(45,28,95,.20);
+  z-index:6;opacity:0;will-change:transform,opacity}
+.detail .dhead{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:750}
+.detail .dhead span{font-size:11px;font-weight:650;color:var(--red);background:rgba(192,40,28,.08);
+  border:1px solid rgba(192,40,28,.2);padding:3px 8px;border-radius:999px}
+.detail .dbody{font-size:14px;line-height:1.75;color:var(--ink2);margin-top:11px}
+.detail .dbody b{color:var(--ink);font-weight:700}
+.detail .dtags{display:flex;gap:7px;margin-top:13px}
+.detail .dtags span{font-size:10.5px;color:var(--muted);background:#f6f2ea;border-radius:5px;padding:4px 8px;letter-spacing:.03em}
+.f3head{position:absolute;left:104px;top:96px;width:1500px;display:flex;justify-content:space-between;align-items:flex-end}
+.f3head h2{font-size:96px;margin:0;line-height:1.02}
+.f3head .fsub{font-size:22px;color:var(--ink2);margin:14px 0 0;font-weight:500}
+#f3Frame{left:210px;top:432px;width:1500px;height:844px}
+.vsbadge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:112px;height:112px;border-radius:50%;
+  background:var(--ink);color:var(--cream);display:grid;place-items:center;font-size:28px;font-weight:800;letter-spacing:.02em;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);z-index:4;opacity:0}
+.metric{position:absolute;padding:14px 20px;border-radius:12px;background:#fff;border:1px solid #e4dfd3;
+  box-shadow:0 18px 40px rgba(45,28,95,.12);opacity:0;z-index:4}
+.metric .mv{font-size:34px;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.metric .ml{font-size:10px;letter-spacing:.16em;color:var(--muted);margin-top:3px}
+.metric .vs{font-size:13px;color:var(--muted);margin:0 6px}
+.metric.purple .mv{color:var(--purple)}.metric.green .mv{color:var(--green)}
+
+/* ================= DELIGHT ================= */
+#sc-delight{background:
+  radial-gradient(800px 600px at 12% 20%, rgba(109,40,217,.10), transparent 60%),
+  var(--cream)}
+.mock{position:absolute;right:92px;top:192px;width:980px;height:700px;border-radius:18px;background:#fff;
+  border:1px solid #e6e1d6;box-shadow:0 40px 90px rgba(45,28,95,.15);overflow:hidden}
+.mock .mbar{height:46px;border-bottom:1px solid #eeeae1;display:flex;align-items:center;gap:8px;padding:0 16px;
+  font-size:10px;color:var(--muted);letter-spacing:.08em}
+.mock .mbar .d{width:8px;height:8px;border-radius:50%;background:#e2ddd2}
+.mock .mtitle{margin-left:10px;font-size:11px;letter-spacing:.1em;color:var(--ink2);font-weight:650}
+.mock-grid{position:absolute;left:30px;right:30px;top:74px;bottom:26px;
+  background-image:linear-gradient(#f0ece3 1px,transparent 1px),linear-gradient(90deg,#f0ece3 1px,transparent 1px);
+  background-size:140px 84px;border:1px solid #f0ece3;border-radius:10px}
+.mday{position:absolute;top:-24px;font-size:10px;color:var(--muted);letter-spacing:.12em}
+.mslot{position:absolute;width:132px;border-radius:8px;border-left:4px solid #d86a9b;background:#fbeef4;
+  padding:9px 10px;font-size:12px;font-weight:700;color:#7c2d52}
+.mslot .t{font-size:9px;font-weight:500;color:#a37088;margin-top:3px}
+.drop{position:absolute;left:430px;top:250px;width:140px;height:70px;border:2px dashed var(--purple);border-radius:9px;
+  background:rgba(109,40,217,.06);opacity:0}
+.dragcard{position:absolute;left:-10px;top:150px;width:272px;padding:14px 16px;border-radius:12px;background:#fff;
+  border:1px solid #e3ddd0;box-shadow:0 24px 50px rgba(45,28,95,.22);will-change:transform;z-index:5}
+.dragcard .dc-t{font-size:16px;font-weight:750}.dragcard .dc-s{font-size:10px;color:var(--muted);margin-top:4px;letter-spacing:.04em}
+.dragcard .dc-b{display:flex;gap:6px;margin-top:9px}
+.dragcard .dc-b span{font-size:9px;padding:3px 7px;border-radius:4px;background:#f3efe7;color:#6d6a63}
+.toast{position:absolute;right:126px;bottom:230px;padding:14px 20px;border-radius:10px;background:#1d1b22;color:#fff;
+  font-size:15px;display:flex;align-items:center;gap:12px;box-shadow:0 20px 50px rgba(0,0,0,.28);opacity:0;z-index:6}
+.toast .k{font-family:Consolas,monospace;font-size:12px;color:#c4b5fd;border:1px solid rgba(196,181,253,.4);
+  padding:2px 7px;border-radius:5px}
+.toast .ok{width:18px;height:18px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-size:11px}
+.undochip{position:absolute;right:92px;top:864px;font-size:11px;color:var(--muted);letter-spacing:.1em;opacity:0}
+
+/* ================= PAYOFF ================= */
+#sc-payoff{background:#0d1020}
+.night{position:absolute;inset:0;background:
+  radial-gradient(900px 700px at 22% 30%, rgba(86,110,190,.20), transparent 60%),
+  linear-gradient(180deg,#0b0e1a,#12172b 60%,#1b1a25)}
+.dawn{position:absolute;inset:0;background:
+  radial-gradient(900px 700px at 26% 78%, rgba(255,198,126,.55), transparent 62%),
+  radial-gradient(1100px 760px at 82% 14%, rgba(255,244,220,.8), transparent 60%),
+  linear-gradient(165deg,#fdf5e7 0%,#f8e6c8 52%,#f2e7d8 100%);opacity:0}
+.orb{position:absolute;left:236px;top:206px;width:186px;height:186px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff8e6,#f2d39a 55%,#d8a95e);box-shadow:0 0 90px rgba(255,220,160,.55);opacity:0}
+.moon{position:absolute;left:300px;top:260px;width:190px;height:190px;border-radius:50%;background:#e9edff;
+  box-shadow:0 0 80px rgba(180,200,255,.28),inset -22px -14px 0 #c9d2ef;opacity:1}
+.clockbig{position:absolute;left:170px;top:470px;font-size:150px;font-weight:750;letter-spacing:-.04em;color:rgba(233,237,255,.92);
+  font-variant-numeric:tabular-nums;opacity:1}
+.clockbig small{font-size:28px;letter-spacing:.22em;color:rgba(233,237,255,.45);display:block;margin-top:6px;font-weight:500}
+.paycopy{position:absolute;right:120px;top:250px;width:1100px;text-align:left}
+.paycopy .pk{font-size:13px;letter-spacing:.24em;color:rgba(233,237,255,.5);font-weight:650}
+.paycopy h2{font-size:122px;color:#f8f3e9;margin:24px 0 0;line-height:1.08;letter-spacing:-.05em}
+.paycopy h2 .warm{color:#f3c98b}
+.paycopy h2 .serif{font-weight:600;letter-spacing:-.02em}
+.paycopy .ps{font-size:24px;color:rgba(233,237,255,.55);margin-top:30px;letter-spacing:.02em}
+.desk{position:absolute;left:90px;bottom:40px;width:760px;height:240px;opacity:.9}
+.cup{position:absolute;left:80px;bottom:20px;width:120px;height:95px;border-radius:0 0 46px 46px;background:#f7f0e2;
+  box-shadow:0 18px 30px rgba(0,0,0,.18)}
+.cup:before{content:'';position:absolute;right:-32px;top:16px;width:44px;height:44px;border:13px solid #f7f0e2;border-radius:50%}
+.cup .coffee{position:absolute;left:8px;right:8px;top:8px;height:12px;border-radius:50%;background:#8a5a3b;opacity:.8}
+.steam{position:absolute;width:8px;height:70px;border-radius:50%;background:linear-gradient(180deg,transparent,rgba(255,255,255,.35));filter:blur(2px)}
+.laptop{position:absolute;left:240px;bottom:20px;width:300px;height:16px;border-radius:3px;background:#d9d0c0}
+.laptop:before{content:'';position:absolute;left:26px;bottom:14px;width:248px;height:150px;border-radius:10px 10px 0 0;background:#20222e;
+  border:6px solid #cfc6b6;border-bottom:0}
+
+/* ================= CTA ================= */
+#sc-cta{background:
+  radial-gradient(1000px 700px at 50% 22%, rgba(139,92,246,.34), transparent 62%),
+  radial-gradient(900px 700px at 80% 100%, rgba(20,121,90,.18), transparent 55%),
+  #250c56;color:var(--cream)}
+.cta-grid{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.13) 1px,transparent 1px);
+  background-size:34px 34px;opacity:.25;mask-image:radial-gradient(circle at 50% 40%,#000,transparent 72%)}
+.cta-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.cta-logo{width:96px;height:96px;border-radius:26px;background:linear-gradient(145deg,#a78bfa,#6d28d9);
+  display:grid;place-items:center;font-size:44px;font-weight:800;color:#fff;box-shadow:0 30px 70px rgba(0,0,0,.35),inset 0 2px 0 rgba(255,255,255,.35)}
+.cta-name{font-size:64px;font-weight:800;letter-spacing:-.02em;margin-top:26px;overflow:hidden;padding:.06em 0 .1em}
+.cta-name>span{display:block}
+.cta-tag{font-size:86px;font-weight:800;letter-spacing:-.04em;margin-top:18px;line-height:1.1}
+.cta-tag .hl2{color:#d8c9ff}
+.cta-line{width:0;height:1px;background:rgba(245,244,240,.35);margin:34px 0 26px}
+.cta-desc{font-size:21px;color:rgba(245,244,240,.72);letter-spacing:.04em}
+.cta-chips{display:flex;gap:10px;margin-top:26px}
+.cta-chip{font-size:13px;letter-spacing:.12em;padding:8px 14px;border-radius:999px;border:1px solid rgba(245,244,240,.22);
+  color:rgba(245,244,240,.66);opacity:0}
+.cta-foot{position:absolute;left:0;right:0;bottom:46px;text-align:center;font-size:12.5px;letter-spacing:.12em;
+  color:rgba(245,244,240,.62);line-height:1.9}
+.cta-foot .sep{margin:0 10px;opacity:.4}
+.cta-stamp{position:absolute;right:64px;top:52px;font-size:11px;letter-spacing:.22em;color:rgba(245,244,240,.4)}
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="stage-bg"></div>
+  <div id="dots"></div>
+
+  <!-- brand -->
+  <div id="brand"><div class="bm">选</div><div><div class="bt">选课工作台</div><div class="bs">NJU · COURSE PLANNER</div></div></div>
+
+  <!-- ============ 1 HOOK ============ -->
+  <section class="scene" id="sc-hook">
+    <div class="ghost">选</div>
+    <div class="hook-cards" id="hookCards"></div>
+    <div class="hook-top">
+      <div class="kicker light"><span class="kline"></span>NJU · 选课季</div>
+      <div class="kicker light" style="letter-spacing:.22em;font-size:12px">A FILM ABOUT COURSE SELECTION</div>
+    </div>
+    <div class="hook-main">
+      <h1 class="hook-title display" id="hookTitle">
+        <span class="line"><span>还在为</span></span>
+        <span class="line"><span>不知道<em class="mark">选什么课</em></span></span>
+        <span class="line"><span>而苦恼吗<span class="qmark">？</span></span></span>
+      </h1>
+      <div class="hook-sub" id="hookSub"><span class="bar"></span>一场关于学分、时间与勇气的冒险</div>
+    </div>
+    <div class="hook-bottom">
+      <span class="tag">2026 · 秋</span>
+      <span class="tag ghost">SCENE 01</span>
+    </div>
+  </section>
+
+  <!-- ============ 2 PAIN 1 ============ -->
+  <section class="scene pain" id="sc-pain1">
+    <div class="bigword">159</div>
+    <div class="docs" id="docs">
+      <div class="doc d1">
+        <div class="doc-bar"><span class="dots"><i></i><i></i><i></i></span>培养方案_2024级.pdf<span class="pg">42 页</span></div>
+        <div class="doc-body">
+          <div class="dh">计算机科学与技术</div><div class="ds">2024 级本科培养方案 · 159 学分</div>
+          <div class="row"><span>通识通修课程</span><b>45</b></div>
+          <div class="row"><span>大类基础课程</span><b>32</b></div>
+          <div class="row"><span>专业准入课程</span><b>20</b></div>
+          <div class="row"><span>专业核心课程</span><b>24</b></div>
+          <div class="row"><span>专业选修课程</span><b>16</b></div>
+          <div class="row"><span>实践环节</span><b>22</b></div>
+          <div class="note">注：各模块认定规则见第三章；跨模块课程不重复计算。</div>
+        </div>
+      </div>
+      <div class="doc d2">
+        <div class="doc-bar"><span class="dots"><i></i><i></i><i></i></span>已修成绩单.xlsx<span class="pg">46 门</span></div>
+        <div class="doc-body">
+          <div class="dh">已修学分统计</div><div class="ds">更新于 2026-09 · 仅供演示</div>
+          <div class="row"><span>已获学分</span><b>103</b></div>
+          <div class="row"><span>待修学分</span><b>56</b></div>
+          <div class="row"><span>计划覆盖</span><b>14</b></div>
+          <div class="row"><span>计划后完成度</span><b>84%</b></div>
+          <div class="note">这 14 分到底算进哪个模块？</div>
+        </div>
+      </div>
+      <div class="doc d3">
+        <div class="doc-bar"><span class="dots"><i></i><i></i><i></i></span>开课列表_第2学期.csv<span class="pg">16 门</span></div>
+        <div class="doc-body">
+          <div class="dh">可选课程 · 节选</div><div class="ds">2026–2027 学年第二学期</div>
+          <div class="row"><span>编译原理</span><b>4 学分</b></div>
+          <div class="row"><span>分布式系统</span><b>3 学分</b></div>
+          <div class="row"><span>模式识别</span><b>2 学分</b></div>
+          <div class="row"><span>人机交互</span><b>3 学分</b></div>
+        </div>
+      </div>
+      <div class="qstamp" id="q1" style="left:380px;top:150px">?</div>
+      <div class="qstamp" id="q2" style="left:120px;top:560px;width:88px;height:88px;font-size:48px">?</div>
+    </div>
+    <div class="copy">
+      <div class="kicker light"><span class="kline"></span>痛点 01 · 信息分散</div>
+      <h2 class="display"><span class="line"><span>培养方案，</span></span><span class="line"><span>翻了三遍。</span></span></h2>
+      <p class="psub" id="p1sub">学分，还是没算明白。</p>
+    </div>
+    <div class="tallies"><span class="tally"></span><span class="tally"></span><span class="tally"></span><span class="tally-label">3 × 反复横跳</span></div>
+    <div class="pn">PDF · XLSX · CSV · 网页 · 记忆</div>
+  </section>
+
+  <!-- ============ 3 PAIN 2 ============ -->
+  <section class="scene pain" id="sc-pain2">
+    <div class="clockghost">02:14</div>
+    <div class="cmts" id="cmts">
+      <div class="cmt" style="left:60px;top:20px;transform:rotate(-5deg)"><div class="who"><span>匿名 · 2023 春</span><span class="stars">★★★★☆</span></div><div class="txt">给分好吗？</div><div class="small">“听说挺水的，但不确定”</div></div>
+      <div class="cmt warn" style="left:420px;top:110px;transform:rotate(4deg)"><div class="who"><span>匿名 · 2022 秋</span><span class="stars">★★☆☆☆</span></div><div class="txt">作业多到怀疑人生</div><div class="small">“仅供参考，可能已改版”</div></div>
+      <div class="cmt" style="left:120px;top:270px;transform:rotate(-3deg)"><div class="who"><span>匿名 · 2024 春</span><span class="stars">★★★★★</span></div><div class="txt">强烈推荐！老师超好</div><div class="small">“三年前的帖子了”</div></div>
+      <div class="cmt" style="left:520px;top:350px;transform:rotate(6deg)"><div class="who"><span>匿名 · 2021 秋</span><span class="stars">★★★☆☆</span></div><div class="txt">点名吗？翘课会被抓吗</div><div class="small">“每学期都不一样”</div></div>
+      <div class="cmt warn" style="left:240px;top:480px;transform:rotate(-7deg)"><div class="who"><span>匿名 · 2023 秋</span><span class="stars">★★☆☆☆</span></div><div class="txt">建议别选，快跑</div><div class="small">“但也没说为什么”</div></div>
+      <div class="cmt" style="left:600px;top:560px;transform:rotate(3deg)"><div class="who"><span>匿名 · 2022 春</span><span class="stars">★★★★☆</span></div><div class="txt">3.9 / 5.0 ·  workload 4.2</div><div class="small">“样本量：3 人”</div></div>
+    </div>
+    <div class="copy">
+      <div class="kicker light"><span class="kline"></span>痛点 02 · 信息过载</div>
+      <h2 class="display"><span class="line"><span>评价刷到凌晨，</span></span></h2>
+      <p class="psub" id="p2sub">越看，越不敢选。</p>
+    </div>
+    <div class="pn">第 37 个标签页 · 仍未决定</div>
+  </section>
+
+  <!-- ============ 4 PAIN 3 ============ -->
+  <section class="scene pain" id="sc-pain3">
+    <div class="grid" id="painGrid">
+      <div class="glines"></div>
+      <div class="ghead">第 3–4 节 · 1–16 周 · 正在试排</div>
+      <div class="gdays"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span></div>
+      <div class="day" style="left:176px"></div><div class="day" style="left:352px"></div>
+      <div class="day" style="left:528px"></div><div class="day" style="left:704px"></div>
+      <div class="block ghost" style="left:540px;top:470px"><div class="bt">人机交互</div><div class="bm2">周五 3–4 节 · 3 学分</div></div>
+      <div class="block ghost" style="left:220px;top:560px"><div class="bt">科技与社会</div><div class="bm2">周二 9–10 节 · 2 学分</div></div>
+      <div class="block ghost" style="left:620px;top:600px"><div class="bt">体育（四）</div><div class="bm2">周三 7–8 节 · 1 学分</div></div>
+      <div class="block b1" id="blk1"><div class="bt">编译原理</div><div class="bm2">周一 3–4 节 · 1–16 周 · 4 学分</div></div>
+      <div class="block b2" id="blk2"><div class="bt">分布式系统</div><div class="bm2">周一 3–4 节 · 1–16 周 · 3 学分</div></div>
+      <div class="conflictline" id="conflictline"></div>
+      <div class="stamp" id="stamp">冲突</div>
+    </div>
+    <div class="copy">
+      <div class="kicker light"><span class="kline"></span>痛点 03 · 试错成本</div>
+      <h2 class="display"><span class="line"><span>两门课，</span></span><span class="line"><span>到底撞不撞？</span></span></h2>
+      <p class="psub" id="p3sub">排完，才知道。</p>
+    </div>
+    <div class="pn">周一 3–4 节 × 2 · 时间线开始变得拥挤</div>
+  </section>
+
+  <!-- ============ 5 PAIN 4 ============ -->
+  <section class="scene pain" id="sc-pain4">
+    <div class="tarots" id="tarots">
+      <div class="tarot ta" id="tarotA">
+        <div class="tl">PLAN A</div><div class="letter">A</div><div class="tn">核心优先</div>
+        <div class="tline"></div>
+        <div class="tr"><span>总学分</span><b>14</b></div>
+        <div class="tr"><span>课程门数</span><b>5</b></div>
+        <div class="tr"><span>时间冲突</span><b style="color:#ff8d84">1</b></div>
+        <div class="tr"><span>到校天数</span><b>4 天</b></div>
+      </div>
+      <div class="tarot tb" id="tarotB">
+        <div class="tl">PLAN B</div><div class="letter">B</div><div class="tn">时间集中</div>
+        <div class="tline"></div>
+        <div class="tr"><span>总学分</span><b>12</b></div>
+        <div class="tr"><span>课程门数</span><b>4</b></div>
+        <div class="tr"><span>时间冲突</span><b style="color:#6ee7b7">0</b></div>
+        <div class="tr"><span>到校天数</span><b>4 天</b></div>
+      </div>
+      <div class="coin" id="coin">?</div>
+    </div>
+    <div class="copy">
+      <div class="kicker light"><span class="kline"></span>痛点 04 · 无法比较</div>
+      <h2 class="display"><span class="line"><span>方案 A，</span></span><span class="line"><span>还是方案 B？</span></span></h2>
+      <p class="psub" id="p4sub">—— 全凭玄学。</p>
+    </div>
+    <div class="pn">抛硬币 · 或者抛自己</div>
+  </section>
+
+  <!-- ============ 6 TURN ============ -->
+  <section class="scene" id="sc-turn">
+    <div class="stopring" id="stopring"></div>
+    <div class="stopbig" id="stopbig">停<span class="dot"></span></div>
+    <div class="turn-copy" id="turnCopy">
+      <div class="kicker" style="color:var(--red)"><span class="kline"></span>但选课不是开盲盒</div>
+      <h2 class="display"><span class="line"><span>选课，</span></span><span class="line"><span>不该是一场<span class="strike" id="strike">赌博</span>。</span></span></h2>
+    </div>
+    <div class="turn-chips" id="turnChips">
+      <span class="tchip">信息分散</span><span class="tchip">认知负担</span><span class="tchip">反复试错</span>
+    </div>
+    <div style="position:absolute;left:120px;bottom:74px;font-size:12px;letter-spacing:.2em;color:var(--muted)">SCENE 06 · 转折</div>
+  </section>
+
+  <!-- ============ 7 REVEAL ============ -->
+  <section class="scene" id="sc-reveal">
+    <div class="reveal-copy">
+      <div class="rk">THE WORKBENCH</div>
+      <h1 class="display"><span class="line"><span>选课</span></span><span class="line"><span class="thin">工作台</span></span></h1>
+      <div class="rsub">把培养方案、课程库、课表，<br>装进同一张图。</div>
+      <div class="rdesc">不是又一个选课网站，<br>而是选课前的沙盘。</div>
+    </div>
+    <div class="reveal-chips" id="revealChips">
+      <span class="rchip">同屏</span><span class="rchip">即时</span><span class="rchip">可撤销</span>
+    </div>
+    <div class="source-cards">
+      <div class="scard s1" id="src1"><div class="ic">案</div><div><div class="sct">培养方案</div><div class="scs">159 学分 · 6 个模块</div></div></div>
+      <div class="scard s2" id="src2"><div class="ic">课</div><div><div class="sct">课程库</div><div class="scs">16 门开课 · 可筛选</div></div></div>
+      <div class="scard s3" id="src3"><div class="ic">表</div><div><div class="sct">周课表</div><div class="scs">星期 / 节次 / 教学周</div></div></div>
+      <div class="ui-frame" id="revealFrame">
+        <div class="ui-zoom" id="revealZoom"><img src="shots/planner.png" alt="规划工作台"></div>
+      </div>
+      <div id="revealBadge"><span class="b">LIVE DEMO · 演示数据</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 8 FEATURE 1 ============ -->
+  <section class="scene feature" id="sc-feat1">
+    <div class="f-copy">
+      <div class="f-idx"><span class="n">02</span><span>—</span><span>学分账本</span></div>
+      <h2 class="display"><span class="line"><span>学分缺口</span></span><span class="line"><span class="accent">一眼看穿</span></span></h2>
+      <div class="fsub">103 / 159，计划后 84%。<br>还差什么，不用再猜。</div>
+    </div>
+    <div class="fnum">
+      <span class="big" id="creditNum">0</span><span class="den">/ 159</span>
+      <div class="cap">毕业学分 · 计划后 84%</div>
+      <div class="bar"><i id="creditBar"></i></div>
+      <div class="pct">已获 103 · 计划覆盖 14</div>
+    </div>
+    <div class="ui-frame" id="f1Frame">
+      <div class="ui-zoom" id="f1Zoom"><img src="shots/overview.png" alt="概览与学分进度"></div>
+      <div class="hl green" id="f1hl" style="left:17.6%;top:24.5%;width:40.5%;height:31%;"></div>
+    </div>
+    <div class="stage-label"><span class="num">01</span> / 03</div>
+  </section>
+
+  <!-- ============ 9 FEATURE 2 ============ -->
+  <section class="scene feature" id="sc-feat2">
+    <div class="f-copy f2copy">
+      <div class="f-idx"><span class="n">03</span><span>—</span><span>冲突检查</span></div>
+      <h2 class="display"><span class="line"><span>时间冲突</span></span><span class="line"><span class="accent">提前拦截</span></span></h2>
+      <div class="fsub">不是弹一个红点，<br>而是说清楚：哪两门、周几、第几节、哪几周。</div>
+      <div class="confpill"><span class="d"></span>1 处冲突 · 已定位</div>
+      <div class="fchips" id="f2chips">
+        <span class="fchip"><b>编译原理</b> × 分布式系统</span>
+        <span class="fchip">周一 · 3–4 节</span>
+        <span class="fchip">1–16 周</span>
+        <span class="fchip">重叠 16 周</span>
+      </div>
+    </div>
+    <div class="ui-frame f2frame" id="f2Frame">
+      <div class="ui-zoom" id="f2Zoom"><img src="shots/planner.png" alt="选课规划与冲突提示"></div>
+      <div class="hl" id="f2hl" style="left:82.4%;top:23.2%;width:15.2%;height:9.3%;"></div>
+      <div class="scan" id="f2scan"></div>
+    </div>
+    <div class="detail" id="f2detail">
+      <div class="dhead">冲突与提醒 <span>1 冲突</span></div>
+      <div class="dbody"><b>《编译原理》</b> 与 <b>《分布式系统》</b><br>周一第 3–4 节冲突，重叠 1–16 周（共 16 周）。</div>
+      <div class="dtags"><span>周一</span><span>3–4 节</span><span>1–16 周</span><span>可撤销</span></div>
+    </div>
+    <div class="stage-label"><span class="num">02</span> / 03</div>
+  </section>
+
+  <!-- ============ 10 FEATURE 3 ============ -->
+  <section class="scene feature" id="sc-feat3">
+    <div class="f3head">
+      <div>
+        <div class="f-idx"><span class="n">04</span><span>—</span><span>多方案比较</span></div>
+        <h2 class="display"><span class="line"><span>A 案 B 案，</span></span><span class="line"><span class="accent">并排开卷</span></span></h2>
+        <div class="fsub">总学分、到校天数、冲突与覆盖度，一张表看完。</div>
+      </div>
+      <div style="font-size:12px;letter-spacing:.2em;color:var(--muted);padding-bottom:12px">PLAN A × PLAN B</div>
+    </div>
+    <div class="ui-frame" id="f3Frame">
+      <div class="ui-zoom" id="f3Zoom"><img src="shots/compare.png" alt="方案对比"></div>
+    </div>
+    <div class="vsbadge" id="vsbadge">VS</div>
+    <div class="metric purple" id="m1" style="right:120px;top:330px"><div class="mv">14<span class="vs">vs</span><span style="color:var(--ink2)">12</span></div><div class="ml">总学分</div></div>
+    <div class="metric green" id="m2" style="right:150px;top:500px"><div class="mv">1<span class="vs">vs</span><span>0</span></div><div class="ml">时间冲突</div></div>
+    <div class="metric" id="m3" style="left:110px;bottom:96px"><div class="mv">4<span class="vs">vs</span>4</div><div class="ml">到校天数</div></div>
+    <div class="stage-label"><span class="num">03</span> / 03</div>
+  </section>
+
+  <!-- ============ 11 DELIGHT ============ -->
+  <section class="scene" id="sc-delight">
+    <div class="f-copy" style="top:200px">
+      <div class="f-idx"><span class="n">05</span><span>—</span><span>可撤销的探索</span></div>
+      <h2 class="display" style="font-size:104px"><span class="line"><span>拖一拖，</span></span><span class="line"><span>换一换。</span></span></h2>
+      <div class="fsub" style="font-size:31px">反悔，还能 <span style="font-family:Consolas,monospace;color:var(--purple);font-weight:700">Ctrl+Z</span>。</div>
+      <div style="margin-top:30px;font-size:15px;color:var(--muted);line-height:1.8;max-width:460px">课程加入、移出、替换，都不会影响正式选课结果。<br>这里只是一张可以随便擦写的草稿纸。</div>
+    </div>
+    <div class="mock">
+      <div class="mbar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="mtitle">方案 A · 核心优先</span><span style="margin-left:auto">已保存 · 1 分钟前</span></div>
+      <div class="mock-grid" id="mockGrid">
+        <span class="mday" style="left:10px">周一</span><span class="mday" style="left:150px">周二</span>
+        <span class="mday" style="left:290px">周三</span><span class="mday" style="left:430px">周四</span><span class="mday" style="left:570px">周五</span>
+        <div class="mslot" style="left:20px;top:8px">编译原理<div class="t">3–4 节 · 1–16 周</div></div>
+        <div class="mslot" style="left:160px;top:92px">分布式系统<div class="t">5–6 节 · 1–16 周</div></div>
+        <div class="mslot" style="left:20px;top:260px">大学英语<div class="t">7–8 节 · 1–16 周</div></div>
+        <div class="mslot" style="left:300px;top:176px">人机交互<div class="t">3–4 节 · 1–16 周</div></div>
+        <div class="mslot" style="left:440px;top:360px">科技与社会<div class="t">5–6 节 · 1–16 周</div></div>
+        <div class="mslot" style="left:580px;top:92px">体育（四）<div class="t">1–2 节 · 1–16 周</div></div>
+        <div class="drop" id="drop"></div>
+      </div>
+      <div class="dragcard" id="dragcard">
+        <div class="dc-t">模式识别</div><div class="dc-s">CS323 · 许晴 · 2 学分</div>
+        <div class="dc-b"><span>补缺口</span><span>项目</span><span>周四 3–4 节</span></div>
+      </div>
+      <div class="toast" id="toast"><span class="ok">✓</span><span id="toastText">已加入方案 A</span><span class="k">Ctrl+Z</span></div>
+    </div>
+    <div class="undochip" id="undoChip">UNDO STACK · 0 / ∞</div>
+    <div class="stage-label"><span class="num">04</span> / 04</div>
+  </section>
+
+  <!-- ============ 12 PAYOFF ============ -->
+  <section class="scene" id="sc-payoff">
+    <div class="night"></div><div class="dawn" id="dawn"></div>
+    <div class="moon" id="moon"></div><div class="orb" id="orb"></div>
+    <div class="clockbig" id="clockbig">01:47<small>还在排课</small></div>
+    <div class="paycopy">
+      <div class="pk">A SMALL WISH</div>
+      <h2 class="display"><span class="line"><span>把熬夜排课的晚上，</span></span><span class="line"><span class="serif warm">还给你。</span></span></h2>
+      <div class="ps" id="paySub">省下来的时间，去睡觉、去跑步、去谈恋爱。</div>
+    </div>
+    <div class="stage-label" style="color:rgba(245,244,240,.5)"><span class="num">07</span> / 13</div>
+  </section>
+
+  <!-- ============ 13 CTA ============ -->
+  <section class="scene" id="sc-cta">
+    <div class="cta-grid"></div>
+    <div class="cta-stamp">NJU · 2026</div>
+    <div class="cta-wrap">
+      <div class="cta-logo" id="ctaLogo">选</div>
+      <div class="cta-name" id="ctaName"><span>选课工作台</span></div>
+      <div class="cta-tag display" id="ctaTag">先规划，<span class="hl2">再选课。</span></div>
+      <div class="cta-line" id="ctaLine"></div>
+      <div class="cta-desc" id="ctaDesc">学业规划与选课决策辅助系统</div>
+      <div class="cta-chips" id="ctaChips">
+        <span class="cta-chip">培养方案</span><span class="cta-chip">选课规划</span><span class="cta-chip">方案对比</span><span class="cta-chip">一键导出</span>
+      </div>
+    </div>
+    <div class="cta-foot" id="ctaFoot">南京大学 · 课程作业演示<span class="sep">/</span>演示数据均为虚构<span class="sep">/</span>不替代学校正式选课系统</div>
+  </section>
+
+  <div id="brandBottom"></div>
+  <div id="sweep"></div>
+  <div id="vignette"></div>
+  <div id="noise"></div>
+  <div id="flash"></div>
+  <div id="global-fade"></div>
+</div>
+<script src="timeline.js"></script>
+<script src="video.js"></script>
+</body>
+</html>

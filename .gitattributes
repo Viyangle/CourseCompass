@@ -1,0 +1,17 @@
+# 统一换行：源码 LF，二进制不做转换
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.mp4 binary
+*.mp3 binary
+*.wav binary
+*.ttf binary
+*.otf binary
+*.woff2 binary
+*.xlsx binary
+*.docx binary
+*.pptx binary
